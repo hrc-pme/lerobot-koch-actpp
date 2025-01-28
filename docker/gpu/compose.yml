@@ -1,0 +1,50 @@
+#############################
+###    shared settings    ###
+#############################
+x-common-settings: &common
+  tty: true
+  network_mode: host
+  privileged: true
+  stop_grace_period: 1s
+  devices:
+    - /dev:/dev
+
+
+############################
+###   shared settings    ###
+############################
+x-gpu-settings: &gpu
+  runtime: nvidia
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            count: all
+            capabilities: [gpu]
+    
+
+##############################
+###   Container Settings   ###
+##############################
+services:
+  koch-actpp-gpu:
+    <<: [*common, *gpu]
+    build: 
+      context: .  
+      dockerfile: Dockerfile
+    image: hrcnthu/lerobot-koch-actpp:gpu
+    container_name: koch-actpp-gpu
+
+    volumes:
+      - ../../core:/home/core
+
+      - $HOME/.Xauthority:/root/.Xauthority
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/shm:/dev/shm
+    
+    environment:
+      - DISPLAY=${DISPLAY}
+      - COMMAND=${COMMAND}
+    
+    command: "/bin/bash -c \"${COMMAND}\""
