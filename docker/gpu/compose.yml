@@ -2,6 +2,19 @@
 ###    shared settings    ###
 #############################
 x-common-settings: &common
+  build: 
+    context: .  
+    dockerfile: Dockerfile
+  image: hrcnthu/lerobot-koch-actpp:gpu
+
+  volumes:
+    - $HOME/.Xauthority:/root/.Xauthority
+    - /tmp/.X11-unix:/tmp/.X11-unix
+    - /dev/shm:/dev/shm
+  
+  environment:
+    - DISPLAY=${DISPLAY}
+  
   tty: true
   network_mode: host
   privileged: true
@@ -25,26 +38,31 @@ x-gpu-settings: &gpu
     
 
 ##############################
-###   Container Settings   ###
+###   Container Services   ###
 ##############################
 services:
-  koch-actpp-gpu:
+  armv:
     <<: [*common, *gpu]
-    build: 
-      context: .  
-      dockerfile: Dockerfile
-    image: hrcnthu/lerobot-koch-actpp:gpu
-    container_name: koch-actpp-gpu
+    container_name: koch-actpp-armv
 
     volumes:
-      - ../../core:/home/core
+      - ../entrypoint:/root/entrypoint
+      - ../../lerobot:/root/lerobot
+    
+    entrypoint: ["/root/entrypoint/symlinks.sh"]
+    command: ["/root/entrypoint/armv.sh"]
 
-      - $HOME/.Xauthority:/root/.Xauthority
-      - /tmp/.X11-unix:/tmp/.X11-unix
-      - /dev/shm:/dev/shm
-    
-    environment:
-      - DISPLAY=${DISPLAY}
-      - COMMAND=${COMMAND}
-    
-    command: "/bin/bash -c \"${COMMAND}\""
+  
+  armv-rec:
+    <<: [*common, *gpu]
+    container_name: koch-actpp-armv-rec
+
+  
+  actpp-train:
+    <<: [*common, *gpu]
+    container_name: koch-actpp-actpp-train
+  
+
+  actpp-deploy:
+    <<: [*common, *gpu]
+    container_name: koch-actpp-actpp-deploy
