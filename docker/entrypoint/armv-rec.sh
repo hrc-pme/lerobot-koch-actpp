@@ -9,11 +9,11 @@ TAG="test"
 
 CONFIG_FILE_PATH="/root/lerobot/lerobot/configs/robot/koch_bimanual.yaml"
 
-FPS="30"
-WARMUP_TIME_S="2"
-EPISODE_TIME_S="10"
-RESET_TIME_S="10"
-NUM_EPISODES="1"
+FPS=30
+WARMUP_TIME_S=2
+EPISODE_TIME_S=10
+RESET_TIME_S=10
+NUM_EPISODES=1
 ###############################################
 
 export PYTHONPATH=/usr/local/lib/python3.10/site-packages:$PYTHONPATH
@@ -28,4 +28,7 @@ python3 lerobot/scripts/control_robot.py record \
   --warmup-time-s $WARMUP_TIME_S \
   --episode-time-s $EPISODE_TIME_S \
   --reset-time-s $RESET_TIME_S \
-  --num-episodes $NUM_EPISODES
+  --num-episodes $NUM_EPISODES 
+  
+  # --robot-overrides \
+  # '~cameras'
