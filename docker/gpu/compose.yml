@@ -41,6 +41,18 @@ x-gpu-settings: &gpu
 ###   Container Services   ###
 ##############################
 services:
+  void:
+    <<: [*common]
+    container_name: koch-actpp-void
+
+    volumes:
+      - ../entrypoint:/root/entrypoint
+      - ../../lerobot:/root/lerobot
+      
+    entrypoint: ["/root/entrypoint/symlinks.sh"]
+    command: ["/bin/bash"]
+
+
   armv:
     <<: [*common, *gpu]
     container_name: koch-actpp-armv
@@ -56,6 +68,14 @@ services:
   armv-rec:
     <<: [*common, *gpu]
     container_name: koch-actpp-armv-rec
+
+    volumes:
+      - ../entrypoint:/root/entrypoint
+      - ../../lerobot:/root/lerobot
+    
+    entrypoint: ["/root/entrypoint/symlinks.sh"]
+    command: ["/root/entrypoint/armv-rec.sh"]
+
 
   
   actpp-train:

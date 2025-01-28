@@ -4,11 +4,16 @@ xhost +local:docker
 export DISPLAY=:0
 
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 {armv|armv-rec|actpp-train|actpp-deploy}"
+  echo "Usage: $0 {void|armv|armv-rec|actpp-train|actpp-deploy}"
   exit 1
 fi
 
 case "$1" in
+  void)
+    cd docker/gpu
+    docker compose -p koch-actpp up void -d
+    ;;
+
   armv)
     cd docker/gpu
     docker compose -p koch-actpp up armv -d

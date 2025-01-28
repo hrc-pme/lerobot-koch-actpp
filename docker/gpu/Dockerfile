@@ -89,8 +89,7 @@ RUN pip3 install --upgrade pip && \
     ffmpeg \
     opencv-python-headless==4.10.0.84 && \
     CPPFLAGS="-I/usr/include/python3.10" pip3 install evdev && \
-    pip3 install -e .["dynamixel"] && \
-    echo 'export PYTHONPATH=/usr/local/lib/python3.10/site-packages:$PYTHONPATH' >> ~/.bashrc
+    pip3 install -e .["dynamixel"] 
 
 WORKDIR /root
 RUN rm -rf lerobot
@@ -109,4 +108,5 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libglib2.0-0 \
     libgl1-mesa-glx \
     libegl1-mesa \
+    speech-dispatcher \
     && rm -rf /var/lib/apt/lists/*
