@@ -1,8 +1,8 @@
-# lerobot-koch-actpp
+# <div align="center"> lerobot-koch-actpp </div>
 
 This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tree/33724a273dfa3a62b845cbbb030b21b71fc5d12b) framework to establish a software environment for the Koch arm and its peripheral devices.
 
-## Environment 
+##  <div align="center"> 🛠️ Environment 🛠️ </div>
 
 * Arm: Bimanual Koch Robot Arm. (2 leaders, 2 followers)
 * Camera: Intel® RealSense™ Depth Camera D415. (3~5 cams)
@@ -10,7 +10,7 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
 * GPU: GPU is required and must be compatible with CUDA 12.4.
 
 
-## Usage
+##  <div align="center"> 🛠️ Usage 🛠️ </div>
 
 1. Clone this repository and initialize submodules.
    
@@ -37,13 +37,15 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    ./gpu_run.sh void
    ```
 
-   >[!NOTE]
-   5 modes available: `void`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
+### Container Startup Option
 
-   You can adjust parameters in corresponding sctipt of each mode under `/docker/gpu/entrypoint`.
+We provide 5 modes: `void`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
 
-      * `void`: Without running any node.
-      * `armv`: Synchronize Koch robot arms and find usable cameras.
-      * `armv-rec`: Record arms & visual data. 
-      * `actpp-train`: Locally train your custom dataset with ACT model.
-      * `actpp-deploy`: Locally deplooy your custom model on Koch and cameras.
+* `void`: Without running any node.
+* `armv`: Synchronize Koch robot arms and find usable cameras.
+* `armv-rec`: Record arms & visual data. 
+* `actpp-train`: Locally train your custom dataset with ACT model.
+* `actpp-deploy`: Locally deplooy your custom model on Koch and cameras.
+
+>[!NOTE]
+You can adjust parameters in corresponding sctipt of each mode under `/docker/gpu/entrypoint`.
