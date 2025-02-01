@@ -2,7 +2,7 @@
 
 This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tree/33724a273dfa3a62b845cbbb030b21b71fc5d12b) framework to establish a software environment for the Koch arm and its peripheral devices.
 
-##  <div align="center"> 🛠️ Environment 🛠️ </div>
+##  <div align="center"> 🌱 Environment 🌱 </div>
 
 * Arm: Bimanual Koch Robot Arm. (2 leaders, 2 followers)
 * Camera: Intel® RealSense™ Depth Camera D415. (3~5 cams)
@@ -37,7 +37,7 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    ./gpu_run.sh void
    ```
 
-### Container Startup Option
+### ✨ Container Startup Option
 
 We provide 5 modes: `void`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
 
