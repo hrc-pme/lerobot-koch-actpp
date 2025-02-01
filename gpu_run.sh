@@ -1,17 +1,25 @@
 #!/bin/bash
 
+# add docker to xhost
 xhost +local:docker
+
+# set display
 export DISPLAY=:0
 
+# make all entrypoint files executable
+chmod +x docker/entrypoint/*
+
+# check validity of args
 if [ "$#" -ne 1 ]; then
-  echo "Usage: $0 {void|armv|armv-rec|actpp-train|actpp-deploy}"
+  echo "Usage: $0 {raw|armv|armv-rec|actpp-train|actpp-deploy}"
   exit 1
 fi
 
+# run docker compose
 case "$1" in
-  void)
+  raw)
     cd docker/gpu
-    docker compose -p koch-actpp up void -d
+    docker compose -p koch-actpp up raw -d
     ;;
 
   armv)

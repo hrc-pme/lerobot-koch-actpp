@@ -31,7 +31,19 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
     ln -sf /dev/ttyACM2 /dev/ttykoch_right_follower
     ln -sf /dev/ttyACM1 /dev/ttykoch_right_leader
    ```
-4. Start the container.
+
+4. (Optional) Setup your huggingface token in `.env` file.
+   
+   ```bash
+   cd /docker/entrypoint
+   mv .env.example .env
+   ```
+
+>[!TIP]
+We recommend setup your huggingface token to visualize training dataset.
+However, you can skip this by removing `/docker/gpu/token.sh` of `entrypoint` block in `docker/gpu/compose.yml` .
+
+1. Start the container.
 
    ```bash
    ./gpu_run.sh void
@@ -43,7 +55,7 @@ We provide 5 modes: `raw`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
 
 * `raw`: Startup the environment without running any node.
 * `armv`: Synchronize Koch robot arms and find usable cameras.
-* `armv-rec`: Record arms & visual data. 
+* `armv-rec`: Synchronize and record arms/visual data. 
 * `actpp-train`: Locally train your custom dataset with ACT model.
 * `actpp-deploy`: Locally deplooy your custom model on Koch and cameras.
 

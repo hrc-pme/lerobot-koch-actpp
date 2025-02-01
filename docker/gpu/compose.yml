@@ -41,15 +41,20 @@ x-gpu-settings: &gpu
 ###   Container Services   ###
 ##############################
 services:
-  void:
-    <<: [*common]
+  raw:
+    <<: [*common, *gpu]
     container_name: koch-actpp-void
 
     volumes:
+      ## NOTE: mount .git to setup the git credentials
+      #  you can comment out this line, 
+      #  if you don't need to upload dataset to huggingface.
+      - ../../.git/:/root/.git
+      
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
       
-    entrypoint: ["/root/entrypoint/symlinks.sh"]
+    entrypoint: ["/root/entrypoint/symlinks.sh", "/root/entrypoint/token.sh"]
     command: ["/bin/bash"]
 
 
@@ -61,7 +66,7 @@ services:
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
     
-    entrypoint: ["/root/entrypoint/symlinks.sh"]
+    entrypoint: ["/root/entrypoint/symlinks.sh", "/root/entrypoint/token.sh"]
     command: ["/root/entrypoint/armv.sh"]
 
   
