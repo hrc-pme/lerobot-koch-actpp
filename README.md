@@ -40,10 +40,10 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    ```
 
 >[!TIP]
-We recommend setup your huggingface token to visualize training dataset.
+We recommend setup your huggingface token to visualize data analysis.
 However, you can skip this by removing `/docker/gpu/token.sh` of `entrypoint` block in `docker/gpu/compose.yml` .
 
-1. Start the container.
+5. Start the container.
 
    ```bash
    ./gpu_run.sh void
