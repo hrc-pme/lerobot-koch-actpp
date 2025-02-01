@@ -39,9 +39,9 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
 
 ### ✨ Container Startup Option
 
-We provide 5 modes: `void`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
+We provide 5 modes: `raw`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
 
-* `void`: Without running any node.
+* `raw`: Startup the environment without running any node.
 * `armv`: Synchronize Koch robot arms and find usable cameras.
 * `armv-rec`: Record arms & visual data. 
 * `actpp-train`: Locally train your custom dataset with ACT model.
