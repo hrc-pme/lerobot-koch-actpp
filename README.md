@@ -20,7 +20,7 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    git submodule update --init --recursive
    ```
 
-2. Setup udev rules for koch robot arms.
+2. Follow [step 1: set custom USB port](https://github.com/hrc-pme/koch_ros2_wrapper?tab=readme-ov-file#step-1-set-custom-usb-port) to setup udev rules.
 
 3. Check your USB device list using `ls -l /dev`, 
    and configure the correct ports for the Koch arm in `/docker/entrypoint/symlinks.sh`.
@@ -41,13 +41,15 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
 
 >[!TIP]
 We recommend setup your huggingface token to visualize data analysis.
-However, you can skip this by removing `/docker/gpu/token.sh` of `entrypoint` block in `docker/gpu/compose.yml` .
+However, you can skip this by removing`/docker/gpu/token.sh` in  `docker/gpu/compose.yml` `entrypoint` block.
 
 5. Start the container.
 
    ```bash
    ./gpu_run.sh void
    ```
+
+---
 
 ### ✨ Container Startup Option
 
