@@ -28,7 +28,4 @@ python3 lerobot/scripts/control_robot.py record \
   --warmup-time-s $WARMUP_TIME_S \
   --episode-time-s $EPISODE_TIME_S \
   --reset-time-s $RESET_TIME_S \
-  --num-episodes $NUM_EPISODES 
-  
-  # --robot-overrides \
-  # '~cameras'
+  --num-episodes $NUM_EPISODES  

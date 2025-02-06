@@ -108,5 +108,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     libglib2.0-0 \
     libgl1-mesa-glx \
     libegl1-mesa \
+    qtbase5-dev \
     speech-dispatcher \
     && rm -rf /var/lib/apt/lists/*
