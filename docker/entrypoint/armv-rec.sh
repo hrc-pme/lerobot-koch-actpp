@@ -11,7 +11,7 @@ CONFIG_FILE_PATH="/root/lerobot/lerobot/configs/robot/koch_bimanual.yaml"
 
 FPS=30
 WARMUP_TIME_S=2
-EPISODE_TIME_S=10
+EPISODE_TIME_S=6
 RESET_TIME_S=10
 NUM_EPISODES=1
 ###############################################

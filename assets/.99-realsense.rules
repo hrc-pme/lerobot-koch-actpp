@@ -1,0 +1,5 @@
+SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0ad3", ATTRS{serial}=="411543020124", SYMLINK+="D415_1"
+SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0ad3", ATTRS{serial}=="411543020896", SYMLINK+="D415_2"
+SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0ad3", ATTRS{serial}=="411543020914", SYMLINK+="D415_3"
+SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0ad3", ATTRS{serial}=="411543020196", SYMLINK+="D415_4"
+SUBSYSTEM=="video4linux", KERNEL=="video*", ATTRS{idVendor}=="8086", ATTRS{idProduct}=="0ad3", ATTRS{serial}=="411543020599", SYMLINK+="D415_5"

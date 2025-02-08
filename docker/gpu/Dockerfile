@@ -102,12 +102,11 @@ RUN rm -rf lerobot
 
 FROM python-dep AS dev
 
-# Install libraries 
+# Install required libraries and tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     libglib2.0-0 \
     libgl1-mesa-glx \
     libegl1-mesa \
-    qtbase5-dev \
     speech-dispatcher \
     && rm -rf /var/lib/apt/lists/*

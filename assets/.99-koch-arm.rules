@@ -1,0 +1,4 @@
+SUBSYSTEM=="tty", ATTRS{serial}=="5876043456", SYMLINK+="ttykoch_left_leader"
+SUBSYSTEM=="tty", ATTRS{serial}=="5876043359", SYMLINK+="ttykoch_right_leader"
+SUBSYSTEM=="tty", ATTRS{serial}=="5876043232", SYMLINK+="ttykoch_left_follower"
+SUBSYSTEM=="tty", ATTRS{serial}=="5876042900", SYMLINK+="ttykoch_right_follower"
