@@ -43,7 +43,7 @@ x-gpu-settings: &gpu
 services:
   raw:
     <<: [*common, *gpu]
-    container_name: koch-actpp-void
+    container_name: koch-actpp-raw
 
     volumes:
       ## NOTE: mount .git to setup the git credentials
@@ -58,16 +58,16 @@ services:
     command: ["/bin/bash"]
 
 
-  armv:
+  arm-sync:
     <<: [*common, *gpu]
-    container_name: koch-actpp-armv
+    container_name: koch-actpp-arm-sync
 
     volumes:
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
     
     entrypoint: ["/root/entrypoint/symlinks.sh", "/root/entrypoint/token.sh"]
-    command: ["/root/entrypoint/armv.sh"]
+    command: ["/root/entrypoint/arm-sync.sh"]
 
   
   armv-rec:

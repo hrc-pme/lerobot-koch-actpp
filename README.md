@@ -36,7 +36,7 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    
    ```bash
    cd /docker/entrypoint
-   mv .env.example .env
+   cp .env.example .env
    ```
 
 >[!TIP]
@@ -46,20 +46,21 @@ However, you can skip this by removing`/docker/gpu/token.sh` in  `docker/gpu/com
 5. Start the container.
 
    ```bash
-   ./gpu_run.sh void
+   ./gpu_run.sh raw
    ```
 
 ---
 
 ### ✨ Container Startup Option
 
-We provide 5 modes: `raw`, `armv`, `armv-rec`, `actpp-train`, `actpp-deploy`.
+We provide 5 modes: `raw`, `arm-sync`, `armv-rec`, `actpp-train`, `actpp-deploy`.
 
 * `raw`: Startup the environment without running any node.
-* `armv`: Synchronize Koch robot arms and find usable cameras.
+* `arm-sync`: Synchronize Koch robot arms and find usable cameras.
 * `armv-rec`: Synchronize and record arms/visual data. 
 * `actpp-train`: Locally train your custom dataset with ACT model.
 * `actpp-deploy`: Locally deplooy your custom model on Koch and cameras.
 
 >[!NOTE]
 You can adjust parameters in corresponding sctipt of each mode under `/docker/gpu/entrypoint`.
+
