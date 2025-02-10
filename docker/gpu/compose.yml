@@ -53,6 +53,7 @@ services:
       
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
+      - ../../ros2-ws:/root/ros2-ws
       
     entrypoint: ["/root/entrypoint/symlinks.sh", "/root/entrypoint/token.sh"]
     command: ["/bin/bash"]
@@ -65,9 +66,10 @@ services:
     volumes:
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
+      - ../../ros2-ws:/root/ros2-ws
     
     entrypoint: ["/root/entrypoint/symlinks.sh", "/root/entrypoint/token.sh"]
-    command: ["/root/entrypoint/arm-sync.sh"]
+    command: ["/root/command/arm-sync.sh"]
 
   
   armv-rec:
@@ -77,9 +79,10 @@ services:
     volumes:
       - ../entrypoint:/root/entrypoint
       - ../../lerobot:/root/lerobot
+      - ../../ros2-ws:/root/ros2-ws
     
     entrypoint: ["/root/entrypoint/symlinks.sh"]
-    command: ["/root/entrypoint/armv-rec.sh"]
+    command: ["/root/command/armv-rec.sh"]
 
 
   
