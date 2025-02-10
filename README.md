@@ -20,10 +20,9 @@ This repository is built on the [lerobot](https://github.com/hrc-pme/lerobot/tre
    git submodule update --init --recursive
    ```
 
-2. Follow [step 1: set custom USB port](https://github.com/hrc-pme/koch_ros2_wrapper?tab=readme-ov-file#step-1-set-custom-usb-port) to setup udev rules.
+2. Follow [UdevRules.md](/assets/UdevRules.md) to setup koch robot arm port.
 
-3. Check your USB device list using `ls -l /dev`, 
-   and configure the correct ports for the Koch arm in `/docker/entrypoint/symlinks.sh`.
+3. onfigure the correct ports for the Koch arm in `/docker/entrypoint/symlinks.sh`.
 
    ```sh
     ln -sf /dev/ttyACM4 /dev/ttykoch_left_follower
