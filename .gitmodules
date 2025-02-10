@@ -1,3 +1,13 @@
 [submodule "lerobot"]
 	path = lerobot
 	url = git@github.com:hrc-pme/lerobot.git
+
+[submodule "ros2-ws/src/koch_ros2_wrapper"]
+	path = ros2-ws/src/koch_ros2_wrapper
+	url = git@github.com:hrc-pme/koch_ros2_wrapper.git
+[submodule "ros2-ws/src/topic_tools"]
+	path = ros2-ws/src/topic_tools
+	url = git@github.com:hrc-pme/topic_tools.git
+[submodule "ros2-ws/src/realsense-ros"]
+	path = ros2-ws/src/realsense-ros
+	url = git@github.com:hrc-pme/realsense-ros.git
