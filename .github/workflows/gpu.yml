@@ -13,7 +13,7 @@ jobs:
     steps:
     - 
       name: Repo Checkout 
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - 
       name: Docker meta
       id: meta
@@ -24,7 +24,7 @@ jobs:
         tags: gpu
     - 
       name: Docker Hub Log-in
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
@@ -32,7 +32,7 @@ jobs:
     # Build Docker image
     - 
       name: Build Docker image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v6
       with:
         context: docker/gpu
         load: true # Load the image into Docker environment
@@ -43,7 +43,7 @@ jobs:
     # Push Docker image to registry
     - 
       name: Push Docker image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v6
       with:
         context: docker/gpu
         push: true
