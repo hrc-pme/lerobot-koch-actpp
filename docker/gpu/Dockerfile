@@ -73,6 +73,7 @@ RUN ln -sf /usr/local/bin/python3.10 /usr/bin/python3 && \
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
+    curl \
     git \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -96,11 +97,42 @@ RUN rm -rf lerobot
 
 
 ################################################################################################
+# - ROS Humble & Realsense Installation stage
+#   - In this stage, I will install ROS2 humble and Intel Realsense dependencies.
+################################################################################################
+
+ARG ROS_DISTRO=humble
+
+FROM pytohn-dep AS ros-humble-base
+
+RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o \
+        /usr/share/keyrings/ros-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" \
+        | tee /etc/apt/sources.list.d/ros2.list > /dev/null 
+    
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    python3-rosdep \
+    ros-$ROS_DISTRO-ros-base \
+    ros-$ROS_DISTRO-librealsense2* && \
+    rosdep init && rosdep update && \
+    echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
+    rm -rf /var/lib/apt/lists/*
+
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
+    git clone https://github.com/hrc-pme/realsense-ros.git -b ros2-master /src/realsense-ros && \
+    rosdep install -i --from-path src --rosdistro $ROS_DISTRO --skip-keys=librealsense2 -y && \
+    colcon build && \
+    rm -rf /var/lib/apt/lists/*
+
+
+################################################################################################
 # - Dev Tools Installation stage
 #   - In this stage, I will install some developing tools.
 ################################################################################################
 
-FROM python-dep AS dev
+FROM ros-humble-base AS dev
 
 # Install required libraries and tools
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
