@@ -2,7 +2,7 @@ name: lerobot-koch-actpp gpu image
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, pomelo925 ]
     paths:
       - docker/gpu/Dockerfile
       - .github/workflows/gpu.yml
