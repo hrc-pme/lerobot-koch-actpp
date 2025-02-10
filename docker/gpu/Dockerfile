@@ -103,7 +103,7 @@ RUN rm -rf lerobot
 
 ARG ROS_DISTRO=humble
 
-FROM pytohn-dep AS ros-humble-base
+FROM python-dep AS ros-humble-base
 
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o \
         /usr/share/keyrings/ros-archive-keyring.gpg && \
