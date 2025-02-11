@@ -122,7 +122,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 WORKDIR /root/ros2-ws
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    git clone https://github.com/hrc-pme/realsense-ros.git -b ros2-master /src/realsense-ros && \
+    git clone https://github.com/hrc-pme/realsense-ros.git -b ros2-master src/realsense-ros && \
     rosdep install -i --from-path src --rosdistro $ROS_DISTRO --skip-keys=librealsense2 -y && \
     colcon build && \
     rm -rf /var/lib/apt/lists/*
