@@ -119,6 +119,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /root/ros2-ws
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     git clone https://github.com/hrc-pme/realsense-ros.git -b ros2-master /src/realsense-ros && \
